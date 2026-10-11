@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Castora Studio | Post once. Cast everywhere.</title>
+<meta name="description" content="One title. One link. Scroll stopping content tailored for every platform and published automatically — from idea to everywhere effortlessly">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C5CFF'/%3E%3Cstop offset='1' stop-color='%23FF6B8B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M26 10a14 14 0 1 0 0 28' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='35' cy='14' r='3' fill='url(%23g)'/%3E%3Ccircle cx='40' cy='24' r='3.4' fill='url(%23g)'/%3E%3Ccircle cx='35' cy='34' r='3' fill='url(%23g)'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B14;--panel:#151524;--panel2:#1D1D31;--line:#2B2B45;
+  --ink:#F5F5FA;--dim:#9A9AB0;--violet:#7C5CFF;--coral:#FF6B8B;--good:#34D399;--bad:#F87171;
+  --grad:linear-gradient(135deg,#7C5CFF,#FF6B8B);
+  --glow:rgba(124,92,255,.22);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="light"]{
+  --bg:#F7F7FC;--panel:#FFFFFF;--panel2:#F0F0F8;--line:#E0E0EE;
+  --ink:#14141F;--dim:#66667C;--glow:rgba(124,92,255,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20% -10% auto -10%;height:70vh;z-index:-1;
+  background:radial-gradient(40% 50% at 25% 30%,var(--glow),transparent 70%),radial-gradient(35% 45% at 80% 20%,rgba(255,107,139,.14),transparent 70%)}
+h1,h2,h3,.brand{font-family:Sora,Inter,sans-serif}
+a{color:inherit}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 20px}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;text-decoration:none}
+.brand small{font-family:Inter;font-size:11px;font-weight:600;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+.nav-r{display:flex;align-items:center;gap:6px}
+.nav-r a.l{color:var(--dim);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:8px}
+.nav-r a.l:hover{color:var(--ink)}
+.icon-btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:16px}
+
+/* hero */
+.hero{text-align:center;padding:72px 0 40px}
+.pill{display:inline-block;font-size:13px;color:var(--dim);border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+h1{font-size:clamp(36px,7vw,64px);line-height:1.08;margin:0 0 18px;letter-spacing:-.03em;font-weight:800}
+.sub{color:var(--dim);font-size:clamp(16px,2.4vw,19px);max-width:600px;margin:0 auto 30px}
+.btn{display:inline-block;border:0;cursor:pointer;font-family:Sora,Inter,sans-serif;font-weight:700;font-size:16px;color:#fff;background:var(--grad);padding:14px 28px;border-radius:14px;text-decoration:none;box-shadow:0 10px 30px -8px rgba(124,92,255,.55);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn.ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:none;margin-left:8px}
+
+/* flow demo */
+.flow{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;max-width:760px;margin:44px auto 0;text-align:left}
+.fbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}
+.fbox .t{font-size:12px;color:var(--dim);margin-bottom:6px}
+.fbox .v{font-size:14px;word-break:break-all}
+.arrow{font-size:26px;color:var(--violet)}
+.outs{display:flex;flex-wrap:wrap;gap:6px}
+.outs span{font-size:12px;border:1px solid var(--line);background:var(--panel2);padding:4px 10px;border-radius:999px}
+.cap{margin-top:10px;font-size:13px;color:var(--dim);border-left:2px solid var(--violet);padding-left:10px}
+
+section{padding:64px 0}
+.eyebrow{color:var(--violet);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+h2{font-size:clamp(26px,4.5vw,38px);margin:6px 0 10px;letter-spacing:-.02em}
+.lead{color:var(--dim);max-width:600px;margin:0 0 28px}
+
+/* studio */
+.studio{max-width:560px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 20px 60px -30px rgba(0,0,0,.5)}
+.tabs{display:flex;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px;margin-bottom:18px}
+.tab{flex:1;text-align:center;padding:10px 6px;border-radius:10px;font-size:14px;color:var(--dim);cursor:pointer;user-select:none;border:0;background:none;font-family:inherit}
+.tab.active{background:var(--grad);color:#fff;font-weight:600}
+label{display:block;font-size:13px;color:var(--dim);margin:0 0 6px}
+textarea,input[type=url]{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--violet);outline-offset:1px;border-color:transparent}
+textarea{min-height:110px;margin-bottom:16px}
+.field{margin-bottom:16px}
+.hint{font-size:12px;color:var(--dim);margin-top:6px}
+.platforms{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{border:1px solid var(--line);background:var(--panel2);color:var(--dim);padding:8px 16px;border-radius:999px;font-size:13px;cursor:pointer;user-select:none;font-family:inherit;transition:all .12s}
+.chip.on{background:var(--grad);color:#fff;border-color:transparent;font-weight:600}
+.card .btn{width:100%}
+.status{margin-top:14px;font-size:13px;min-height:20px}
+.status.good{color:var(--good)}.status.bad{color:var(--bad)}
+
+/* webhook box */
+.hook{margin-top:16px;border:1px dashed var(--line);border-radius:16px;padding:14px 16px;background:var(--panel)}
+.hook summary{cursor:pointer;font-size:14px;font-weight:600;display:flex;justify-content:space-between;gap:10px;list-style:none}
+.hook summary::-webkit-details-marker{display:none}
+.badge{font-size:12px;font-weight:500;color:var(--dim)}
+.badge.ok{color:var(--good)}
+.hook-body{margin-top:12px}
+.row{display:flex;gap:8px;margin-top:8px}
+.row input{flex:1}
+.sm{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:0 14px;font-size:13px;cursor:pointer;font-family:inherit;min-height:44px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.num{width:34px;height:34px;border-radius:10px;background:var(--grad);color:#fff;display:grid;place-items:center;font-family:Sora;font-weight:700;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:18px}
+.step p{margin:0;color:var(--dim);font-size:14px}
+.host{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
+.host .step ol{margin:10px 0 0;padding-left:18px;color:var(--dim);font-size:14px}
+.host .step li{margin-bottom:4px}
+.tag{display:inline-block;font-size:11px;font-weight:600;color:var(--good);background:rgba(52,211,153,.12);padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+code{background:var(--panel2);border:1px solid var(--line);padding:1px 6px;border-radius:6px;font-size:12.5px}
+.note{margin-top:18px;font-size:14px;color:var(--dim);border-left:3px solid var(--coral);padding-left:14px}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:640px){
+  .flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}
+  .nav-r a.l{display:none}.hero{padding-top:44px}
+  .btn.ghost{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap nav-in">
+  <a class="brand" href="#top" aria-label="Castora Studio home">
+    <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C5CFF"/><stop offset="1" stop-color="#FF6B8B"/></linearGradient></defs>
+      <path d="M26 10a14 14 0 1 0 0 28" fill="none" stroke="url(#lg)" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="35" cy="14" r="3" fill="url(#lg)"/><circle cx="40" cy="24" r="3.4" fill="url(#lg)"/><circle cx="35" cy="34" r="3" fill="url(#lg)"/>
+    </svg>
+    Castora <small>Studio</small>
+  </a>
+  <div class="nav-r">
+    <a class="l" href="#how">How it works</a>
+    <a class="l" href="#cast">Cast</a>
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark theme">☾</button>
+  </div>
+</div></nav>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <span class="pill">Built  for  Creators</span>
+    <h1>Post once.<br><span class="gt">Cast everywhere.</span></h1>
+    <p class="sub">One title. One link. Scroll stopping content tailored for every platform and published automatically — from idea to everywhere effortlessly</p>
+    <a class="btn" href="#cast">Open the studio</a><a class="btn ghost" href="#how">See how it works</a>
+
+    <div class="flow" aria-hidden="true">
+      <div class="fbox"><div class="t">You give</div><div class="v"><b>48 Laws of Power</b><br>catbox.moe/abc123.mp4</div></div>
+      <div class="arrow">→</div>
+      <div class="fbox"><div class="t">Castora casts to</div>
+        <div class="outs"><span>Telegram</span><span>Instagram</span><span>Facebook</span><span>LinkedIn</span><span>YouTube</span></div>
+        <div class="cap">One Drop. Every Platform. Zero Busywork.</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="cast"><div class="wrap">
+  <div style="text-align:center;margin-bottom:26px">
+    <div class="eyebrow">The studio</div>
+    <h2>Write it. Pick where. <span class="gt">Cast.</span></h2>
+  </div>
+
+  <div class="studio">
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-type="text" role="tab">Text Cast</button>
+        <button class="tab" data-type="image" role="tab">Image Cast</button>
+        <button class="tab" data-type="video" role="tab">Video Cast</button>
+      </div>
+
+      <label for="article" id="articleLabel">What's the post about?</label>
+      <textarea id="article" placeholder="Paste your article, idea, or title here, like: 48 Laws of Power"></textarea>
+
+      <div class="field" id="imageField" hidden>
+        <label for="imageUrl">Image link</label>
+        <input id="imageUrl" type="url" placeholder="https://i.postimg.cc/xxxx/photo.jpg">
+        <div class="hint">Needs a direct link ending in .jpg, .png or similar. See how to get one below.</div>
+      </div>
+      <div class="field" id="videoField" hidden>
+        <label for="videoUrl">Video link</label>
+        <input id="videoUrl" type="url" placeholder="https://files.catbox.moe/xxxxxx.mp4">
+        <div class="hint">Needs a direct link ending in .mp4 or similar. See how to get one below.</div>
+      </div>
+
+      <label>Where should it go?</label>
+      <div class="platforms" id="platforms"></div>
+
+      <button class="btn" id="castBtn">Cast now</button>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <details class="hook" id="hook">
+      <summary><span>Webhook URL</span><span class="badge" id="hookBadge">Not set</span></summary>
+      <div class="hook-body">
+        <label for="webhookUrl">Paste the Production URL from your Workflow</label>
+        <div class="row">
+          <input id="webhookUrl" type="url" placeholder="https://your-domain.com/webhook/publish" autocomplete="off">
+          <button class="sm" id="saveWebhook">Save</button>
+          <button class="sm" id="clearWebhook">Clear</button>
+        </div>
+        <div class="hint">Saved only in this browser. It is never written into the page code, so nobody else can see or use it.</div>
+      </div>
+    </details>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>From a file to every platform in four steps</h2>
+  <p class="lead">Castora Studio sends links, not files. So first turn your image or video into a Direct link.</p>
+
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Turn media into a link</h3><p>Upload your image or video to a free host (details below) and copy the direct link.</p></div>
+    <div class="step"><div class="num">2</div><h3>Add your title</h3><p>Type a title or idea, such as "48 Laws of Power" and Paste your direct link.</p></div>
+    <div class="step"><div class="num">3</div><h3>Pick platforms</h3><p>Choose where it should go. Each platform gets its own caption style and length.</p></div>
+    <div class="step"><div class="num">4</div><h3>Cast</h3><p>Castora Studio sends your content to an automated workflow which publishes it across your social platforms.</p></div>
+  </div>
+
+  <h3 style="margin:36px 0 0;font-size:20px">Making a link that never expires</h3>
+  <div class="host">
+    <div class="step">
+      <h3>Postimages <span class="tag">Images</span></h3>
+      <ol>
+        <li>Open <code>postimages.org</code> and choose your image.</li>
+        <li>Set the expiration to <b>No expiration</b>.</li>
+        <li>Upload, then copy the <b>Direct link</b> (it ends in .jpg or .png).</li>
+        <li>Paste it into the Image link box.</li>
+      </ol>
+    </div>
+    <div class="step">
+      <h3>Catbox <span class="tag">Images &amp; videos</span></h3>
+      <ol>
+        <li>Open <code>catbox.moe</code> and pick your file (leave the temporary option off).</li>
+        <li>Click upload and copy the link it gives you.</li>
+        <li>It looks like <code>files.catbox.moe/xxxxxx.mp4</code>.</li>
+        <li>Paste it into the Video link box.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="note"><b>Quick check:</b> paste your link in a new browser tab. If the image or video opens by itself with no page around it, it is a direct link and will work. If you see a web page instead, you copied the wrong link.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <span>Castora Studio. Post once. Cast everywhere.</span>
+  <span>Works with any workflow</span>
+</div></footer>
+
+<script>
+const LABELS={telegram:'Telegram',instagram:'Instagram',facebook:'Facebook',linkedin:'LinkedIn',youtube:'YouTube'};
+const ALLOWED={
+  text:['telegram','facebook','linkedin'],
+  image:['telegram','instagram','facebook','linkedin'],
+  video:['telegram','instagram','facebook','linkedin','youtube']
+};
+const ARTICLE_LABEL={
+  text:"What's the post about?",
+  image:'Title or caption source',
+  video:'Title or description source'
+};
+let type='text', selected=new Set();
+const $=id=>document.getElementById(id);
+const statusEl=$('status'), castBtn=$('castBtn'), hookIn=$('webhookUrl');
+
+function say(msg,cls){statusEl.className='status '+(cls||'');statusEl.textContent=msg}
+function validUrl(u){try{const x=new URL(u);return x.protocol==='https:'||x.protocol==='http:'}catch(e){return false}}
+
+function renderPlatforms(){
+  const box=$('platforms'); box.innerHTML=''; selected=new Set(ALLOWED[type]);
+  ALLOWED[type].forEach(p=>{
+    const c=document.createElement('button');
+    c.type='button'; c.className='chip on'; c.textContent=LABELS[p]; // plain text, no symbols
+    c.setAttribute('aria-pressed','true');
+    c.onclick=()=>{
+      const on=!selected.has(p);
+      on?selected.add(p):selected.delete(p);
+      c.classList.toggle('on',on); c.setAttribute('aria-pressed',on);
+    };
+    box.appendChild(c);
+  });
+}
+function setType(t){
+  type=t;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.type===t));
+  $('articleLabel').textContent=ARTICLE_LABEL[t];
+  $('imageField').hidden=t!=='image'; $('videoField').hidden=t!=='video';
+  renderPlatforms(); say('');
+}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setType(b.dataset.type));
+
+/* webhook: saved in this browser only */
+function badge(){
+  const ok=!!hookIn.value.trim();
+  $('hookBadge').textContent=ok?'Saved':'Not set'; $('hookBadge').className='badge'+(ok?' ok':'');
+}
+try{const s=localStorage.getItem('castora_webhook'); if(s) hookIn.value=s;}catch(e){}
+badge();
+$('saveWebhook').onclick=()=>{
+  const v=hookIn.value.trim();
+  if(!validUrl(v)){say('Enter a valid webhook URL starting with https://','bad');return}
+  try{localStorage.setItem('castora_webhook',v); badge(); say('Webhook URL saved in this browser.','good')}
+  catch(e){say('Could not save here (browser storage blocked). The URL still works until you close the page.','bad')}
+};
+$('clearWebhook').onclick=()=>{
+  hookIn.value=''; try{localStorage.removeItem('castora_webhook')}catch(e){}
+  badge(); say('Webhook URL removed.','good');
+};
+
+/* theme */
+function applyTheme(t){document.documentElement.dataset.theme=t;$('themeBtn').textContent=t==='dark'?'☾':'☀'}
+try{applyTheme(localStorage.getItem('castora_theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'))}catch(e){applyTheme('dark')}
+$('themeBtn').onclick=()=>{
+  const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  applyTheme(t); try{localStorage.setItem('castora_theme',t)}catch(e){}
+};
+
+/* cast */
+castBtn.onclick=async()=>{
+  const url=hookIn.value.trim();
+  const article=$('article').value.trim();
+  const image_url=type==='image'?$('imageUrl').value.trim():'';
+  const video_url=type==='video'?$('videoUrl').value.trim():'';
+
+  if(!validUrl(url)){$('hook').open=true;hookIn.focus();return say('Add your n8n webhook URL first (open the box below).','bad')}
+  if(!article) return say('Add a title or some content first.','bad');
+  if(type==='image'&&!validUrl(image_url)) return say('Paste a valid image link.','bad');
+  if(type==='video'&&!validUrl(video_url)) return say('Paste a valid video link.','bad');
+  if(!selected.size) return say('Pick at least one platform.','bad');
+
+  const payload={article,image_url,video_url,platforms:[...selected]};
+  castBtn.disabled=true; say('Casting...');
+  try{
+    const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!res.ok) throw new Error('your workflow answered with status '+res.status);
+    say('Cast sent to '+payload.platforms.map(p=>LABELS[p]).join(', ')+'.','good');
+  }catch(err){
+    const cors=err instanceof TypeError;
+    say(cors
+      ?'Could not reach the webhook. Check the URL, that the workflow is active (production URL), and that CORS allows this page in the Webhook node options.'
+      :'Cast failed: '+err.message+'.','bad');
+  }finally{castBtn.disabled=false}
+};
+
+setType('text');
+</script>
+</body>
+</html>
